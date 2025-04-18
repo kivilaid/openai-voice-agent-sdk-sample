@@ -114,6 +114,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     workflow=workflow,
                     config=VoicePipelineConfig(
                         tts_settings=TTSModelSettings(
+                            voice="coral",
                             buffer_size=512, transform_data=transform_data
                         )
                     ),

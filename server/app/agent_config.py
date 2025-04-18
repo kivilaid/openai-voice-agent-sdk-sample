@@ -22,21 +22,21 @@ def submit_refund_request(order_number: str):
 customer_support_agent = Agent(
     name="Customer Support Agent",
     instructions=f"You are a customer support assistant. {STYLE_INSTRUCTIONS}",
-    model="gpt-4o-mini",
+    model="gpt-4.1",
     tools=[get_past_orders, submit_refund_request],
 )
 
 stylist_agent = Agent(
     name="Stylist Agent",
-    model="gpt-4o-mini",
+    model="gpt-4.1",
     instructions=f"You are a stylist assistant. {STYLE_INSTRUCTIONS}",
-    tools=[WebSearchTool(user_location=UserLocation(type="approximate", city="Tokyo"))],
+    tools=[WebSearchTool(user_location=UserLocation(type="approximate", city="Tallinn"))],
     handoffs=[customer_support_agent],
 )
 
 triage_agent = Agent(
     name="Triage Agent",
-    model="gpt-4o-mini",
+    model="gpt-4.1",
     instructions=f"Route the user to the appropriate agent based on their request. {STYLE_INSTRUCTIONS}",
     handoffs=[stylist_agent, customer_support_agent],
 )
